@@ -11,38 +11,35 @@ This algorithm takes in images of people and outputs them aligned and centered s
 3. `zoom` function zooms in and resizes the aligned image to a fixed size.
 
 # Algorithm Steps
+## Input Images
+<div style="display: flex; align-items: center; justify-content: center; gap: 1rem">
+  <img src="./images/BBB00315e.JPG" alt="Image 3" width="20%">
+  <img src="./images/BBB00310e.JPG" alt="Image 2" width="20%">
+  <img src="./images/BBB00297e.JPG" alt="Image 1" width="20%">
+</div>
 
+## Process
 ```mermaid
-flowchart TB
-  subgraph Input
-    direction TB
-    sampleImage1("<img src='./images/BBB00315e.JPG' />sampleImage1")
-    sampleImage2("<img src='./images/BBB00297e.JPG' />sampleImage2")
-    sampleImage3("<img src='./images/BBB00310e.JPG' />sampleImage3")
-  end
-  subgraph Process
+flowchart LR
+  A(Input Images) --> B{Faces Detected?}
+  subgraph Image Processing Steps
     direction LR
-    A(Input Images) --> B{Faces Detected?}
-    subgraph Image Processing Steps
-      direction LR
-      B -->|Yes| C[Select Largest Face]
-      B -->|No| D[Output Error]
-      C --> E[Align and Shift]
-      E --> F[Fill Missing Pixels]
-      F --> G[Zoom and Resize]
-    end
-    D --> z((( )))
-    G --> z
+    B -->|Yes| C[Select Largest Face]
+    B -->|No| D[Output Error]
+    C --> E[Align and Shift]
+    E --> F[Fill Missing Pixels]
+    F --> G[Zoom and Resize]
   end
-  subgraph Output
-    direction TB
-    sampleImage1Aligned("<img src='./output/BBB00315e.jpg' />sampleImage")
-    sampleImage2Aligned("<img src='./output/BBB00297e.jpg' />sampleImage")
-    sampleImage3Aligned("<img src='./output/BBB00310e.jpg' />sampleImage")
-  end
-
-  Input --> Process --> Output
+  D --> z((( )))
+  G --> z
 ```
+
+## Output Images
+<div style="display: flex; align-items: center; justify-content: center; gap: 1rem">
+  <img src="./output/BBB00315e.JPG" alt="Image 3" width="20%">
+  <img src="./output/BBB00310e.JPG" alt="Image 2" width="20%">
+  <img src="./output/BBB00297e.JPG" alt="Image 1" width="20%">
+</div>
 
 # Installation
 
